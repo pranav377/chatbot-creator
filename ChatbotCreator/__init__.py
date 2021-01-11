@@ -18,7 +18,7 @@ try:
     from urllib.request import urlopen
     from bs4 import BeautifulSoup
 
-    __version__ = '0.0.1'
+    __version__ = '0.0.3'
 
 
     warnings.filterwarnings("ignore")
