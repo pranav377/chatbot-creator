@@ -8,10 +8,10 @@ setuptools.setup(
     version="0.0.1",
     author="Pranava Mohan",
     license="MIT",
-    description="Python package for creating chatbots including DiscordBot.",
+    description="Python package for creating chatbots.(including DiscordBot).",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    # url="https://github.com/pypa/sampleproject",
+    url="https://github.com/My-refer/chatbot-creator",
     packages=['ChatbotCreator'],
     install_requires=["pandas", "keras", "sklearn", "numpy==1.18.5", "nltk", "spacy", "tensorflow==2.3.1", "discord", "google", "bs4"],
     classifiers=[
