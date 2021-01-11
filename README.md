@@ -114,6 +114,8 @@ discord_bot.run() # this will run the discord bot
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+See the source code here [/chatbot-creator/ChatbotCreator/__init__.py](https://github.com/My-refer/chatbot-creator/blob/main/ChatbotCreator/__init__.py)
+
 ## Issues and Problems
 
 Currently, the CreateDiscordBot class has some issues which are:
