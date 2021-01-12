@@ -18,9 +18,6 @@ try:
     from urllib.request import urlopen
     from bs4 import BeautifulSoup
 
-    __version__ = '0.0.3'
-
-
     warnings.filterwarnings("ignore")
     class ChatbotCreator():
 
@@ -61,23 +58,36 @@ try:
                     self.train_y.append(self.y[self.i])
                 
             for self.phrase in self.new_x:
-                self.words = word_tokenize(self.phrase)
-                self.stemmed_words = []
-                for self.word in self.words:
-                    self.stemmed_words.append(self.stemmer.stem(self.word))
-                self.var = " ".join(self.text for self.text in self.stemmed_words)
-                self.train_x.append(self.var)
+                try:
+                    self.words = word_tokenize(self.phrase)
+                    self.stemmed_words = []
+                    for self.word in self.words:
+                        self.stemmed_words.append(self.stemmer.stem(self.word))
+                    self.var = " ".join(self.text for self.text in self.stemmed_words)
+                    self.train_x.append(self.var)
+                except:
+                    print("[INFO] Installing packages for nltk")
+                    import nltk
+
+                    nltk.download("wordnet")
+                    nltk.download("stopwords")
+                    nltk.download("punkt")
+                    print("[INFO] PLease re-run the program")
+                    time.sleep(5)
+                    sys.exit()
 
             try:
                 self.nlp = spacy.load("en_core_web_md")
             except:
                 print("[INFO] Installing spacy model")
                 self.executable = sys.executable
-                os.system(executable + " -m spacy download en_core_web_md")
+                self.executable = str(self.executable)
+                os.system(self.executable + " -m spacy download en_core_web_md")
                 print("[INFO] Successfully installed spacy model")
                 print("[INFO] Please re-run the program")
                 time.sleep(5)
-                exit()
+                sys.exit()
+
             self.docs = [self.nlp(self.text) for self.text in self.train_x]
             self.x_vectors = [self.x.vector for self.x in self.docs]
             self.x_vectors = np.array(self.x_vectors)
@@ -135,7 +145,17 @@ try:
     class Run():
         def __init__(self, model_file_name, used_neural_network):
             self.model_name = model_file_name
-            self.nlp = spacy.load("en_core_web_md")
+            self.stemmer = PorterStemmer()
+            try:
+                self.nlp = spacy.load("en_core_web_md")
+            except:
+                self.executable = sys.executable
+                self.executable = str(executable)
+                os.system(self.executable + " -m spacy download en_core_web_md")
+                print("[INFO] Installled en_core_web_md")
+                print("[INFO] Please re-run the program")
+                time.sleep(5)
+                sys.exit()
             with open("./data123.pickle", "rb") as f:
                 self.x_vectors, self.train_y, self.classes = pickle.load(f)
             with open("./data321.pickle", "rb") as f:
@@ -148,6 +168,24 @@ try:
 
         def run(self, input_variable):
             self.phrase = input_variable
+            try:
+                self.words = word_tokenize(self.phrase)
+                self.stemmed_words = []
+                for self.word in self.words:
+                    self.stemmed_words.append(self.stemmer.stem(self.word))
+                self.var = " ".join(self.text for self.text in self.stemmed_words)
+                self.phrase = self.var
+            except:
+                print("[INFO] Installing packages for nltk")
+                import nltk
+
+                nltk.download("wordnet")
+                nltk.download("stopwords")
+                nltk.download("punkt")
+                print("[INFO] Please re-run the program")
+                time.sleep(5)
+                sys.exit()
+
             if self.used_neural_network == True:
                 warnings.filterwarnings("ignore")
                 self.to_predict = []
@@ -181,6 +219,7 @@ try:
 
     class CreateDiscordBot():
         def __init__(self, model_file_name_to_use, bot_token, use_wikipedia=True):
+            self.stemmer = PorterStemmer()
             with open("./data321.pickle", "rb") as f:
                 self.data = pickle.load(f)
             with open("./data123.pickle", "rb") as f:
@@ -208,7 +247,25 @@ try:
                 if message.author == self.client.user:
                     return
                     
-                self.inp = message.content
+                try:    
+                    self.inp = message.content
+                    self.words = word_tokenize(self.inp)
+                    self.stemmed_words = []
+                    for self.word in self.words:
+                        self.stemmed_words.append(self.stemmer.stem(self.word))
+                    self.var = " ".join(self.text for self.text in self.stemmed_words)
+                    self.inp = self.var
+                except:
+                    print("[INFO] Installing packages for nltk")
+                    import nltk
+
+                    nltk.download("wordnet")
+                    nltk.download("stopwords")
+                    nltk.download("punkt")
+
+                    print("[INFO] Please re-run the program")
+                    time.sleep(5)
+                    sys.exit()
 
                 self.to_predict = []
                 self.phrase = self.inp
@@ -262,6 +319,7 @@ except:
     import time
     print("[INFO] Installing packages...")
     executable = sys.executable
+    executable = str(executable)
     os.system(executable + " -m pip install pandas")
     os.system(executable + " -m pip install sklearn")
     os.system(executable + " -m pip install spacy")
@@ -274,3 +332,4 @@ except:
     nltk.download("punkt")
     print("[INFO] Please Re-run the program")
     time.sleep(5)
+    sys.exit()
