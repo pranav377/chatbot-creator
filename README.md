@@ -39,26 +39,23 @@ here "class" is the label, "patterns" are the questions for the label and "respo
 
 To create a simple chatbot, first you need to create the pickle data files
 
-### Creating a neural network model.
+### Creating the model.
 
 ```python
-import ChatbotCreator
 from ChatbotCreator import ChatbotCreator
 
 main = ChatbotCreator("model.hdf5") # Model file name to save
 main.createData("data.json") # The data file that you created. This will create the pickle data files.
-main.createModel(use_neural_network=True)'''This will create a neural network model and save it 
+main.createModel()'''This will create a neural network model and save it 
 with the name that you gave in the first step.
-If you want to create a SVM model then you can set that value to False. 
 '''
 ```
-NOTE: Currently, you can't create a discord bot with a SVM model but you can create a normal bot with SVM.
 After you have created the pickle data files and the model using the above code, you can remove that.
 
 ```python
 from ChatbotCreator import Run
 
-run_model = Run("model.hdf5", used_neural_network=True)''' Enter the model file name and specify whether you have used a neural network model or not.'''
+run_model = Run("model.hdf5")''' Enter the model file name.'''
 
 while True:
     inp = input("Enter cmd: ")
@@ -72,26 +69,7 @@ while True:
 
  Here- "pred" is the predicted label, "response" is the response for the predicted label, results are the probabilities for every single label and "results_index" is the predicted label's index in "results"
 
- ### Creating a SVM model
-
- ```python
-import ChatbotCreator
-from ChatbotCreator import ChatbotCreator
-
-main = ChatbotCreator("model.hdf5")
-main.createData("data.json")
-main.createModel(use_neural_network=False)
-```
-
-```python
-while True:
-    inp = input("Enter cmd: ")
-    if inp == "q":
-        break
-    run_model = Run("model.hdf5", used_neural_network=False)
-    pred, response = run_model.run(input_variable=inp) 
-    print(response)
-```
+If the chatbot is not confident about a particular question then it will save that question in a text file named "low-confidence-patterns.txt" in your current directory. You can use the queries in the text file to train the model again.
 
 ## Creating a discord bot
 
@@ -114,7 +92,7 @@ discord_bot.run() # this will run the discord bot
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-See the source code here [/chatbot-creator/ChatbotCreator/__init__.py](https://github.com/My-refer/chatbot-creator/blob/main/ChatbotCreator/__init__.py)
+See the source code here [/chatbot-creator/ChatbotCreator/](https://github.com/My-refer/chatbot-creator/blob/main/ChatbotCreator/)
 
 ## Issues and Problems
 
