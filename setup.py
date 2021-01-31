@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="chatbot-creator",
-    version="0.0.3",
+    version="0.0.5",
     author="Pranava Mohan",
     license="MIT",
     description="Python package for creating chatbots.(including DiscordBot).",
