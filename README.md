@@ -104,5 +104,5 @@ Currently, the CreateDiscordBot class has some issues which are:
 
 ## License
 
-[MIT License](https://github.com/My-refer/chatbot-creator/blob/main/LICENSE)
+[MIT License](https://github.com/pranav377/chatbot-creator/blob/main/LICENSE)
 
