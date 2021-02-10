@@ -92,7 +92,7 @@ discord_bot.run() # this will run the discord bot
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-See the source code here [/chatbot-creator/ChatbotCreator/](https://github.com/My-refer/chatbot-creator/blob/main/ChatbotCreator/)
+See the source code here [/chatbot-creator/ChatbotCreator/](https://github.com/pranav377/chatbot-creator/tree/main/ChatbotCreator)
 
 ## Issues and Problems
 
