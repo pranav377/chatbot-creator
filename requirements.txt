@@ -5,6 +5,6 @@ numpy
 nltk
 spacy
 tensorflow
-discord
+discord.py
 google
 bs4
