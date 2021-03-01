@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/My-refer/chatbot-creator",
     packages=['ChatbotCreator'],
-    install_requires=["pandas", "keras", "sklearn", "numpy", "nltk", "spacy", "tensorflow", "discord", "google", "bs4"],
+    install_requires=["pandas", "keras", "sklearn", "numpy", "nltk", "spacy", "tensorflow", "discord.py", "google", "bs4"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
