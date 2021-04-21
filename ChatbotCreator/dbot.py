@@ -13,13 +13,18 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 class CreateDiscordBot():
-    def __init__(self, model_file_name_to_use, bot_token, use_wikipedia=True):
+    def __init__(
+            self,
+            model_file_name_to_use,
+            bot_token,
+            use_wikipedia=True,
+            lang_model="en_core_web_md"):
         self.stemmer = PorterStemmer()
         with open("./data321.pickle", "rb") as f:
             self.data = pickle.load(f)
         with open("./data123.pickle", "rb") as f:
             self.x_vectors, self.train_y, self.classes = pickle.load(f)
-        self.nlp = spacy.load("en_core_web_md")
+        self.nlp = spacy.load(lang_model)
         self.model = load_model("./" + model_file_name_to_use)
         self.TOKEN = bot_token
         self.client = discord.Client()

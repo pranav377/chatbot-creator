@@ -88,6 +88,20 @@ discord_bot.run() # this will run the discord bot
 
 ```
 
+## Languages support
+
+To use different spaCy trained pipeline languages (to make your bot speak spanish or french) you may also specify the pipeline name:
+
+```python
+discord_bot = CreateDiscordBot("model_file_name", "bot_token", "pt_core_news_lg")
+```
+then
+```python
+run_model = Run("model.hdf5", lang_model="pt_core_news_lg")
+```
+
+You may find different trained models at: [Trained Models & Pipelines](https://spacy.io/models)
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

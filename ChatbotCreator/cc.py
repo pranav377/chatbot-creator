@@ -13,8 +13,13 @@ import warnings
 warnings.filterwarnings("ignore")
 class ChatbotCreator():
 
-    def __init__(self, model_file_name_to_save):
+    def __init__(
+            self,
+            model_file_name_to_save,
+            lang_model="en_core_web_md"
+        ):
         self.model_name = model_file_name_to_save
+        self.lang_model = lang_model
 
     def createData(self, json_file_path):
         self.train_x = []
@@ -70,12 +75,12 @@ class ChatbotCreator():
                 sys.exit()
 
         try:
-            self.nlp = spacy.load("en_core_web_md")
+            self.nlp = spacy.load(self.lang_model)
         except:
             print("[INFO] Installing spacy model")
             self.executable = sys.executable
             self.executable = str(self.executable)
-            os.system(self.executable + " -m spacy download en_core_web_md")
+            os.system(self.executable + " -m spacy download %s" % self.lang_model)
             print("[INFO] Successfully installed spacy model")
             print("[INFO] Please re-run the program")
             time.sleep(5)
