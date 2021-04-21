@@ -12,16 +12,16 @@ import numpy as np
 
 
 class Run():
-    def __init__(self, model_file_name):
+    def __init__(self, model_file_namem, lang_model="en_core_web_md"):
         self.model_name = model_file_name
         self.stemmer = PorterStemmer()
         try:
-            self.nlp = spacy.load("en_core_web_md")
+            self.nlp = spacy.load(lang_model)
         except:
             self.executable = sys.executable
             self.executable = str(self.executable)
-            os.system(self.executable + " -m spacy download en_core_web_md")
-            print("[INFO] Installled en_core_web_md")
+            os.system(self.executable + " -m spacy download %s" % lang_model)
+            print("[INFO] Installled %s" % lang_model)
             print("[INFO] Please re-run the program")
             time.sleep(5)
             sys.exit()
