@@ -33,7 +33,7 @@ example:
 ```
 here "class" is the label, "patterns" are the questions for the label and "responses" are the responses or answer for the label.
 
-[NOTE]: You should create the "data.json" file like the given example where it should first have the "data" tag and then other tags exlained in the example.
+[NOTE]: You should create the "data.json" file like the given example where it should first have the "data" tag and then other tags explained in the example.
 
 ## Usage 
 
